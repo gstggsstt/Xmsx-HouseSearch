@@ -1,7 +1,8 @@
 package com.xmsx24.demo;
 
-import lombok.Data;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
-public interface UserDAO {
-
+public interface UserDAO extends ElasticsearchRepository<UserBean, String> {
+    UserBean findByUsername(String userName);
+    UserBean findByUsernameAndPassword(String username, String password);
 }

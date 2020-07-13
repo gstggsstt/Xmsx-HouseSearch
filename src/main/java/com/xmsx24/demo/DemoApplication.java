@@ -10,6 +10,7 @@ public class DemoApplication {
 
     public static void main(String[] args) throws JsonProcessingException {
         SpringApplication.run(DemoApplication.class, args);
+        System.out.println("================================start success==========================");
     }
 
 

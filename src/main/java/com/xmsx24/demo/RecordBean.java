@@ -13,34 +13,25 @@ import java.util.Random;
 
 @Data
 @AllArgsConstructor
-@Document(indexName = "house")
-public class HouseBean implements Serializable {
-    public HouseBean() {}
+@Document(indexName = "userrecord")
+public class RecordBean implements Serializable {
+    public RecordBean(){};
+    public RecordBean(String userId, String type, String keyword){
+        this.userId = userId;
+        this.type = type;
+        this.keyWord = keyword;
+    }
     @Id
     private String id = getRandomId(64);
-
-    @Field(type = FieldType.Integer)
-    private Integer price = -1;
-
-    @Field(analyzer = "ik_max_word", type = FieldType.Text)
-    private String title = "";
-    @Field(analyzer = "ik_max_word", type = FieldType.Text)
-    private String detailMessage = "";
-    @Field(analyzer = "ik_max_word", type = FieldType.Text)
-    private String area="";
-    @Field(analyzer = "ik_max_word", type = FieldType.Text)
-    private String community="";
-    @Field(analyzer = "ik_max_word", type = FieldType.Text)
-    private String visitTime="";
-
     @Field(type = FieldType.Text)
-    private String picture="";
+    private String userId;
     @Field(type = FieldType.Text)
-    private String url = "";
-
+    private String type;
+    @Field(type = FieldType.Text)
+    private String keyWord;
     public static String getRandomId(int len) {
         StringBuffer str = new StringBuffer();
-        String temp="0123456789ABCDEF";
+        String temp="ABC0123456789DEF";
         Random rnd = new Random();
         for(int i=0;i<len;++i) str.append(temp.charAt(rnd.nextInt(16)));
         return str.toString();
